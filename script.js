@@ -37,7 +37,6 @@ rose.addEventListener('click', () => {
   });
   timers.push(setTimeout(() => show('memory'), reduced ? 100 : 4400));
 });
-document.getElementById('skip-flower').addEventListener('click', () => { timers.forEach(clearTimeout); timers = []; show('memory'); });
 const photos = ['photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg', 'photos/4.jpg'];
 let photoIndex = 0;
 function changePhoto(delta) {
