@@ -1,3 +1,32 @@
+// Set to false while developing to open the birthday page immediately.
+const COUNTDOWN_ENABLED = false;
+
+// Midnight on 3 November 2026 in Jakarta (UTC+07:00).
+const birthdayTime = Date.parse('2026-11-03T00:00:00+07:00');
+const countdown = document.getElementById('countdown');
+const birthdayContent = document.getElementById('birthday-content');
+const countdownUnits = ['days', 'hours', 'minutes', 'seconds'].map(id => document.getElementById(id));
+let countdownInterval;
+function updateCountdown() {
+  const remaining = Math.max(0, birthdayTime - Date.now());
+  if (!COUNTDOWN_ENABLED || remaining === 0) {
+    countdown.hidden = true;
+    birthdayContent.hidden = false;
+    document.getElementById('music-toggle').hidden = false;
+    clearInterval(countdownInterval);
+    return;
+  }
+  let seconds = Math.floor(remaining / 1000);
+  const days = Math.floor(seconds / 86400); seconds %= 86400;
+  const hours = Math.floor(seconds / 3600); seconds %= 3600;
+  const minutes = Math.floor(seconds / 60); seconds %= 60;
+  [days, hours, minutes, seconds].forEach((value, index) => {
+    countdownUnits[index].textContent = String(value).padStart(2, '0');
+  });
+}
+updateCountdown();
+if (!countdown.hidden) countdownInterval = setInterval(updateCountdown, 1000);
+
 const music = document.getElementById('music');
 const musicToggle = document.getElementById('music-toggle');
 const musicLabel = document.getElementById('music-label');

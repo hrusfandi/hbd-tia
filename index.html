@@ -14,8 +14,20 @@
 </head>
 <body>
   <audio id="music" src="sound/2026_sound.mp3" loop preload="none"></audio>
-  <button class="music-control" id="music-toggle" type="button" aria-label="Putar musik" aria-pressed="false"><span aria-hidden="true">♪</span><span id="music-label">Musik</span></button>
-  <main>
+  <button class="music-control" id="music-toggle" hidden type="button" aria-label="Putar musik" aria-pressed="false"><span aria-hidden="true">♪</span><span id="music-label">Musik</span></button>
+  <section class="countdown-screen" id="countdown" aria-labelledby="countdown-title">
+    <div class="countdown-card">
+      <p class="eyebrow">UNTUK ADEK <span>✦</span> 3 NOVEMBER 2026</p>
+      <h1 id="countdown-title">Sebentar lagi,<br><em>hari spesial adek.</em></h1>
+      <p>Ada kejutan kecil yang sedang menunggu adek. Sampai jumpa di tanggal 3, ya.</p>
+      <div class="countdown-clock" role="timer" aria-label="Hitung mundur menuju 3 November 2026 pukul 00.00 WIB">
+        <div><strong id="days">--</strong><span>HARI</span></div><div><strong id="hours">--</strong><span>JAM</span></div><div><strong id="minutes">--</strong><span>MENIT</span></div><div><strong id="seconds">--</strong><span>DETIK</span></div>
+      </div>
+      <p class="countdown-date">3 NOVEMBER 2026 <span>✦</span> 00.00 WIB</p>
+      <noscript>Aktifkan JavaScript untuk melihat hitung mundur dan membuka kejutannya.</noscript>
+    </div>
+  </section>
+  <main id="birthday-content" hidden>
     <section class="screen hero is-active" id="welcome" aria-labelledby="welcome-title">
       <div class="hero-content">
         <p class="eyebrow">3 november 2026 <span>✦</span> untuk adek</p>
