@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8b1a6">
+  <meta name="description" content="Sebuah kejutan kecil untuk Adek.">
+  <title>Untuk Adek, dengan sayang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <audio id="music" src="sound/2026_sound.mp3" loop preload="none"></audio>
+  <button class="music-control" id="music-toggle" type="button" aria-label="Putar musik" aria-pressed="false"><span aria-hidden="true">♪</span><span id="music-label">Musik</span></button>
+  <main>
+    <section class="screen hero is-active" id="welcome" aria-labelledby="welcome-title">
+      <div class="hero-content">
+        <p class="eyebrow">3 november 2026 <span>✦</span> untuk adek</p>
+        <h1 id="welcome-title">Selamat ulang tahun,<br><em>Adek.</em></h1>
+        <p class="hero-note">Ada sesuatu yang mas siapkan untuk adek.</p>
+        <button class="button button-light" type="button" data-next="flower">Masuk ke taman <span aria-hidden="true">↗</span></button>
+      </div>
+    </section>
+
+    <section class="screen flower-screen" id="flower" aria-labelledby="flower-title" hidden>
+      <div class="section-heading"><p class="eyebrow">SEBUAH KEJUTAN KECIL <span>✦</span></p><h2 id="flower-title">Ada yang menunggu<br><em>untuk adek.</em></h2><p>Sentuh mawarnya, ya.</p></div>
+      <button id="rose" class="rose" type="button" aria-label="Sentuh mawar untuk membukanya">
+        <span class="rose-image rose-one active"></span><span class="rose-image rose-two"></span><span class="rose-image rose-three"></span><span class="rose-image rose-four"></span><span class="rose-hint" aria-hidden="true">✧</span>
+      </button>
+      <div class="flower-bottom"><span class="rule"></span><span id="flower-status" aria-live="polite">SENTUH MAWAR UNTUK MELANJUTKAN</span><span class="rule"></span></div>
+      <button class="text-button" id="skip-flower" type="button">Lanjutkan <span aria-hidden="true">→</span></button>
+    </section>
+
+    <section class="screen memory-screen" id="memory" aria-labelledby="memory-title" hidden>
+      <div class="memory-inner">
+        <p class="eyebrow">SEBUAH KENANGAN <span>✦</span></p>
+        <h2 id="memory-title">Masih ingat<br><em>malam ini?</em></h2>
+        <p class="intro">Satu momen yang mas simpan baik-baik.</p>
+        <div class="photo-frame"><img id="memory-photo" src="photos/1.jpg" alt="Kenangan bersama Tia" fetchpriority="low"><div class="photo-caption"><span id="photo-count">01 / 04</span></div></div>
+        <div class="photo-nav"><button type="button" id="previous-photo" aria-label="Foto sebelumnya">←</button><span>Ketuk panah untuk melihat foto lainnya</span><button type="button" id="next-photo" aria-label="Foto berikutnya">→</button></div>
+        <button class="button button-dark" type="button" data-next="letter">Ada pesan untuk adek <span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="screen letter-screen" id="letter" aria-labelledby="letter-title" hidden>
+      <div class="letter-wrap"><p class="eyebrow">3 NOVEMBER 2026 <span>✦</span> UNTUK TIA</p><article class="letter-card">
+        <div class="letter-ornament" aria-hidden="true">✳</div><p class="letter-kicker">SEBUAH PESAN DARI MAS</p>
+        <h2 id="letter-title">Untuk Adek<span>,</span></h2>
+        <div class="letter-copy">
+          <p>Selamat ulang tahun yang ke-25 ya, Tia.</p>
+          <p>Waktu terasa begitu cepat buat mas. Rasanya baru kemarin mas kenal adek, beberapa hari sebelum ulang tahun adek yang ke-21. Sekarang, sudah empat tahun berlalu sejak hari itu.</p>
+          <p>Di ulang tahun adek kali ini, mas berdoa semoga Allah selalu memberikan kesehatan untuk adek dan mempermudah setiap jalan yang sedang adek usahakan. Semoga Allah menjaga adek dan menghadirkan banyak kebahagiaan dalam hidup adek.</p>
+          <p>Terima kasih ya sudah hadir di hidup mas. Mas sangat menyayangi adek, tidak pernah berubah sejak hari pertama, terus tumbuh setiap harinya. Mungkin, seiring waktu dan keadaan, cara mas menyampaikan rasa sayang itu yang berubah. Tapi, sayang mas ke adek tetap ada dan akan selalu ada.</p>
+          <p>Adek segalanya buat mas, satu-satunya wanita yang mas sayang.</p>
+          <p>Selamat ulang tahun ya, adek. 🤍</p>
+        </div><p class="signature"><em>- Hendi -</em></p>
+      </article><button class="text-button restart" type="button" data-next="welcome">↺ &nbsp; Lihat dari awal</button><p class="closing">UNTUK ADEK, HARI INI DAN SETERUSNYA <span>✦</span></p></div>
+    </section>
+  </main>
+</body>
+</html>
