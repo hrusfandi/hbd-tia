@@ -1,6 +1,24 @@
 // Set to false while developing to open the birthday page immediately.
 const COUNTDOWN_ENABLED = true;
 
+// Paste the deployed Apps Script web app URL here to enable access logging.
+const ACCESS_LOG_URL = 'https://script.google.com/macros/s/AKfycbzGFsE1qSC31MXJz53ThmeuhmgfPliWSS8hufjX49wHKEpbvoL3dVkCTrPsWsyQv709aQ/exec';
+function logAccess(event) {
+  if (!ACCESS_LOG_URL) return;
+  try {
+    fetch(ACCESS_LOG_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ event })
+    }).catch(() => {});
+  } catch (_) {
+    // Logging must never interrupt the birthday experience.
+  }
+}
+logAccess('site_opened');
+
 // Midnight on 3 November 2026 in Jakarta (UTC+07:00).
 const birthdayTime = Date.parse('2026-11-03T00:00:00+07:00');
 const countdown = document.getElementById('countdown');
@@ -105,12 +123,14 @@ giftForm.addEventListener('submit', async event => {
   const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
   if (answerHashes.has(hash)) {
     giftFeedback.textContent = '';
+    logAccess('answer_correct');
     show('gift-reveal');
   } else {
     giftFeedback.textContent = 'Hmm, belum tepat nih 🤔 Coba ingat-ingat lagi, atau lihat petunjuknya ya.';
     giftAnswer.focus();
   }
 });
+document.querySelector('.gift-claim').addEventListener('click', () => logAccess('whatsapp_clicked'));
 document.querySelector('.restart').addEventListener('click', () => {
   timers.forEach(clearTimeout); timers = [];
   rose.classList.remove('blooming'); rose.disabled = false;
