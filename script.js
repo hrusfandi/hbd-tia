@@ -77,10 +77,46 @@ function changePhoto(delta) {
 }
 document.getElementById('previous-photo').addEventListener('click', () => changePhoto(-1));
 document.getElementById('next-photo').addEventListener('click', () => changePhoto(1));
+
+// Hashes only keep the answers out of sight; validation still runs in the browser.
+const answerHashes = new Set([
+  '2eab005be0d086bc981564bc35783a01fd74cc1d1b9cd2e373558bcba096b8f6',
+  '333b1f697147f023c2bea6a0e97df2d779ea3997a6a912b463805d25c31c1748'
+]);
+const giftForm = document.getElementById('gift-form');
+const giftAnswer = document.getElementById('gift-answer');
+const giftFeedback = document.getElementById('gift-feedback');
+function normalizeAnswer(answer) {
+  return answer.toLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
+}
+giftForm.addEventListener('submit', async event => {
+  event.preventDefault();
+  const answer = normalizeAnswer(giftAnswer.value);
+  if (!answer) {
+    giftFeedback.textContent = 'Tulis jawaban adek dulu, ya. 🤍';
+    giftAnswer.focus();
+    return;
+  }
+  if (!window.crypto?.subtle) {
+    giftFeedback.textContent = 'Maaf, jawaban belum bisa diperiksa. Coba buka halaman ini melalui HTTPS, ya.';
+    return;
+  }
+  const digest = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(answer));
+  const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+  if (answerHashes.has(hash)) {
+    giftFeedback.textContent = '';
+    show('gift-reveal');
+  } else {
+    giftFeedback.textContent = 'Hmm, belum tepat nih 🤔 Coba ingat-ingat lagi, atau lihat petunjuknya ya.';
+    giftAnswer.focus();
+  }
+});
 document.querySelector('.restart').addEventListener('click', () => {
   timers.forEach(clearTimeout); timers = [];
   rose.classList.remove('blooming'); rose.disabled = false;
   roseImages.slice(1).forEach(image => image.classList.remove('active'));
   status.textContent = 'SENTUH MAWAR UNTUK MELANJUTKAN';
   photoIndex = 0; changePhoto(0);
+  giftForm.reset(); giftFeedback.textContent = '';
+  document.querySelector('.gift-hint').open = false;
 });

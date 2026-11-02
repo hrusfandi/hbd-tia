@@ -72,6 +72,7 @@
           <p>Selamat ulang tahun ya, adek. 🤍</p>
         </div><p class="signature"><em>- Hendi -</em></p>
       </article>
+      <div class="gift-invitation"><button class="button button-dark" type="button" data-next="gift-question">Ada satu kejutan lagi <span aria-hidden="true">🎁</span></button></div>
       <nav class="past-birthdays" aria-labelledby="past-title">
         <p class="eyebrow">DARI TAHUN KE TAHUN <span>✦</span></p>
         <h2 id="past-title">Kenangan <em>sebelumnya.</em></h2>
@@ -83,6 +84,36 @@
         </div>
       </nav>
       <button class="text-button restart" type="button" data-next="welcome">↺ &nbsp; Lihat dari awal</button><p class="closing">UNTUK ADEK, HARI INI DAN SETERUSNYA <span>✦</span></p></div>
+    </section>
+
+    <section class="screen gift-screen" id="gift-question" aria-labelledby="gift-question-title" hidden>
+      <div class="gift-card">
+        <p class="eyebrow">SATU KENANGAN LAGI <span>✦</span></p>
+        <div class="gift-ornament" aria-hidden="true">✳</div>
+        <h2 id="gift-question-title">Ada satu pertanyaan<br><em>untuk adek.</em></h2>
+        <form id="gift-form" novalidate>
+          <label for="gift-answer">Apa judul film yang adek dan mas tonton di bioskop tahun lalu?</label>
+          <input id="gift-answer" name="answer" type="text" autocomplete="off" aria-describedby="gift-feedback" placeholder="Tulis jawaban adek di sini">
+          <p class="gift-feedback" id="gift-feedback" aria-live="polite"></p>
+          <button class="button button-dark" type="submit">Jawab pertanyaan <span aria-hidden="true">→</span></button>
+        </form>
+        <details class="gift-hint"><summary>Kasih petunjuk, dong</summary><p>Lokasi di CGV Pakuwon. 🍿</p></details>
+        <button class="text-button" type="button" data-next="letter">← Kembali ke surat</button>
+      </div>
+    </section>
+
+    <section class="screen gift-screen" id="gift-reveal" aria-labelledby="gift-reveal-title" hidden>
+      <div class="gift-card">
+        <p class="eyebrow">SEBUAH HADIAH UNTUK ADEK <span>✦</span></p>
+        <div class="gift-ornament" aria-hidden="true">✳</div>
+        <h2 id="gift-reveal-title">Yay, jawaban adek <em>benar!</em> 🎉</h2>
+        <div class="gift-copy">
+          <p>Mas punya hadiah kecil buat adek. Semoga bisa bikin hari adek jadi lebih menyenangkan, ya.</p>
+          <p>Hadiahnya masih Mas simpan dulu. Klik tombol di bawah dan bilang ke Mas kalau adek sudah berhasil menemukannya. 💌</p>
+        </div>
+        <a class="button button-dark gift-claim" href="https://wa.me/6287739274055?text=Mas%2C%20adek%20sudah%20berhasil%20membuka%20hadiahnya%21%20%F0%9F%8E%81" target="_blank" rel="noopener noreferrer">Klaim hadiah ke Mas <span aria-hidden="true">🎁</span></a>
+        <button class="text-button gift-back" type="button" data-next="letter">← Kembali ke surat</button>
+      </div>
     </section>
   </main>
 </body>
