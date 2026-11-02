@@ -1,5 +1,5 @@
 // Set to false while developing to open the birthday page immediately.
-const COUNTDOWN_ENABLED = false;
+const COUNTDOWN_ENABLED = true;
 
 // Midnight on 3 November 2026 in Jakarta (UTC+07:00).
 const birthdayTime = Date.parse('2026-11-03T00:00:00+07:00');
